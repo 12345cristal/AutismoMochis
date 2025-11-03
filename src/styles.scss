@@ -1,1 +1,299 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   Autismo Mochis - Estilo global SCSS
+   ========================================================= */
+
+/* ===============================
+   Variables de Branding
+   =============================== */
+$primary-color: #007bff;      // azul principal
+$secondary-color: #6c757d;    // gris neutro
+$success-color: #28a745;
+$error-color: #ff4d4f;
+$bg-color: #f4f6f8;
+$text-color: #333;
+$font-family: 'Arial', sans-serif;
+
+/* ===============================
+   Breakpoints globales
+   =============================== */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+/* ===============================
+   Reset general
+   =============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $text-color;
+  background-color: $bg-color;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===============================
+   Tipografía y enlaces
+   =============================== */
+a {
+  text-decoration: none;
+  color: $primary-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($primary-color, 15%);
+  }
+}
+
+/* ===============================
+   Botones globales
+   =============================== */
+button {
+  font-family: $font-family;
+  font-weight: 600;
+  background-color: $primary-color;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 100%;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background-color: lighten($primary-color, 30%);
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary-color;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+  }
+}
+
+/* ===============================
+   Inputs, selects, textarea
+   =============================== */
+input, select, textarea {
+  font-family: $font-family;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+}
+
+input[type="checkbox"], input[type="radio"] {
+  accent-color: $primary-color;
+}
+
+/* ===============================
+   Contenedores
+   =============================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media (max-width: $breakpoint-lg) { padding: 0.75rem; }
+  @media (max-width: $breakpoint-md) { padding: 0.5rem; }
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* ===============================
+   Header / Navbar
+   =============================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+
+  .header-search {
+    flex: 1 1 200px;
+    min-width: 150px;
+  }
+
+  .header-user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer {
+  background-color: #fff;
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: $secondary-color;
+}
+
+/* ===============================
+   Sidebar colapsable
+   =============================== */
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  height: 100vh;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  overflow-y: auto;
+
+  &.collapsed {
+    width: 60px;
+
+    .sidebar-link span {
+      display: none;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    position: absolute;
+    left: -250px;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+
+    &.active { left: 0; }
+  }
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: $text-color;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($primary-color, 40%);
+    color: $primary-color;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  span {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ===============================
+   Cards / Widgets
+   =============================== */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+
+  &:hover { transform: translateY(-2px); }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0.75rem;
+  }
+}
+
+/* ===============================
+   Tablas
+   =============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+
+  th, td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    th, td { padding: 0.5rem; }
+  }
+}
+
+/* ===============================
+   Mensajes de validación
+   =============================== */
+.error-message { color: $error-color; font-size: 0.875rem; }
+.success-message { color: $success-color; font-size: 0.875rem; }
+
+/* ===============================
+   Scrollbars
+   =============================== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: $bg-color; }
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* ===============================
+   Dashboard Grid Responsive
+   =============================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* ===============================
+   Responsive general
+   =============================== */
+@media (max-width: $breakpoint-lg) { body { font-size: 15px; } }
+@media (max-width: $breakpoint-md) { body { font-size: 14px; } }
+@media (max-width: $breakpoint-sm) { body { font-size: 13px; } }

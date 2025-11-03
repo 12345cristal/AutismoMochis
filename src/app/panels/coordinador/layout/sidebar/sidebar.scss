@@ -1,0 +1,32 @@
+.sidebar-container {
+  width: 250px;
+  height: 100vh;
+  background-color: #0d6efd;
+  color: #fff;
+  padding-top: 1rem;
+  position: fixed;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      gap: 0.8rem;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #0b5ed7;
+      }
+
+      .icon {
+        width: 20px;
+        text-align: center;
+      }
+    }
+  }
+}
